@@ -35,12 +35,26 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
-        tableView.dataSource = self
-        tableView.delegate = self
-        
+        setupAddItemTableView()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case identifier:
+            guard let navigation = segue.destination as? UINavigationController else { return }
+            guard let select = navigation.topViewController as? AdditemViewController else { return }
+            select.delegate = self
+        default:
+            break
+        }
+    }
+    
+    private func setupAddItemTableView(){
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
+    }
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -59,4 +73,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         itemArray[indexPath.row].isChecked.toggle()
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
+}
+
+extension ViewController: AddItemViewControllerDelegate {
+    func didSaveItem(name: String) {
+        itemArray.append(Item(name: name, isChecked: false))
+        tableView.reloadData()
+    }
+    
+    
 }

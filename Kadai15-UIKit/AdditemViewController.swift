@@ -7,25 +7,24 @@
 
 import UIKit
 
+protocol AddItemViewControllerDelegate: AnyObject {
+    func didSaveItem(name: String)
+}
+
 class AdditemViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    weak var delegate: AddItemViewControllerDelegate?
+    
+    @IBAction private func didSaveItemButton(_ sender: Any){
+        guard let itemName = textField.text else { return }
+        delegate?.didSaveItem(name: itemName)
+        dismiss(animated: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction private func didTapCancelButton(_ sender: Any){
+        dismiss(animated: true)
     }
-    */
 
 }

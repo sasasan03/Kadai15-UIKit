@@ -36,12 +36,12 @@
                     <navigationItem key="navigationItem" id="xpI-vZ-qdb">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mu2-EG-LgD">
                             <connections>
-                                <segue destination="PD4-Gn-gSO" kind="unwind" unwindAction="exitWithSegue:" id="jQN-WM-scv"/>
+                                <action selector="didTapCancelButton:" destination="ww0-6w-R1v" id="lET-9b-Osj"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="OQd-Bb-xDt">
                             <connections>
-                                <segue destination="PD4-Gn-gSO" kind="unwind" unwindAction="saveExitWithSegue:" id="f3Z-mL-v0I"/>
+                                <action selector="didSaveItemButton:" destination="ww0-6w-R1v" id="6xJ-yh-u1q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -50,7 +50,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HP9-If-gtL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="PD4-Gn-gSO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2803.8167938931297" y="3.5211267605633805"/>
         </scene>
