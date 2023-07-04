@@ -24,14 +24,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func exit(segue: UIStoryboardSegue){}
-    
-    @IBAction func saveExit(segue: UIStoryboardSegue){
-        guard let nextVC = segue.source as? AdditemViewController,
-              let addItem = nextVC.textField.text else { return }
-        itemArray.append(Item(name: addItem, isChecked: false))
-        tableView.reloadData()
-    }
+//    @IBAction func exit(segue: UIStoryboardSegue){}
+//
+//    @IBAction func saveExit(segue: UIStoryboardSegue){
+//        guard let nextVC = segue.source as? AdditemViewController,
+//              let addItem = nextVC.textField.text else { return }
+//        itemArray.append(Item(name: addItem, isChecked: false))
+//        tableView.reloadData()
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case identifier:
+        case "AddItem":
             guard let navigation = segue.destination as? UINavigationController else { return }
             guard let select = navigation.topViewController as? AdditemViewController else { return }
             select.delegate = self
