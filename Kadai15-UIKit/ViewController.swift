@@ -23,15 +23,6 @@ class ViewController: UIViewController {
     ]
     
     @IBOutlet weak var tableView: UITableView!
-    
-//    @IBAction func exit(segue: UIStoryboardSegue){}
-//
-//    @IBAction func saveExit(segue: UIStoryboardSegue){
-//        guard let nextVC = segue.source as? AdditemViewController,
-//              let addItem = nextVC.textField.text else { return }
-//        itemArray.append(Item(name: addItem, isChecked: false))
-//        tableView.reloadData()
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
